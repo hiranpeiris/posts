@@ -24,10 +24,17 @@ const clearCurrentPost = post => ({
   post,
 });
 
+const setPostUser = (post, user) => ({
+  type: POSTS.SET_USER,
+  post,
+  user,
+});
+
 export {
   loadPosts,
   setPosts,
   setError,
   setCurrentPost,
   clearCurrentPost,
+  setPostUser
 };

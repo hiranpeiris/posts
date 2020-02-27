@@ -36,7 +36,7 @@ class Posts extends Component {
                   onPress={() => this.onSelectPost(item)}>
                   <PostListRow
                     title={item.title}
-                    desc={item.title}
+                    desc={`by ${item.user && item.user.name}`}
                   />
                 </TouchableOpacity>
               )}

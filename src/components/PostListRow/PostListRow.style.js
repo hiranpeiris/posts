@@ -27,13 +27,14 @@ export const RowTitleBox = styled.View`
 export const RowTitleText = styled.Text`
   font-size: 18;
   font-weight: bold;
-  height: 20px;
+  max-height: 45px;
   color: ${({ color }) => (color && color) || 'black'};
 `;
 
 export const RowDescText = styled.Text`
   margin-top: 4px;
   font-size: 14;
-  height: 40px;
+  font-style: italic;
+  height: 20px;
   color: ${({ color }) => (color && color) || 'black'};
 `;

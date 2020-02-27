@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects';
-import { fetchPosts, fetchPhotos } from '../api';
-import { setPosts, setError } from '../actions';
+import { fetchPosts, fetchUserInfo } from '../api';
+import { setPosts, setPostUser, setError } from '../actions';
 
 function* handlePostsLoad() {
   try {
@@ -11,13 +11,13 @@ function* handlePostsLoad() {
   }
 }
 
-function* handlePhotosLoad() {
+function* handleSetUserToPost(post) {
   try {
-    const posts = yield call(fetchPosts);
-    yield put(setPosts(posts));
+    const user = yield call(fetchUserInfo, post.userId);
+    yield put(setPostUser(post, user));
   } catch (error) {
-    yield put(setError(error.toString()));
+    console.log(`Cannot get user info for userId: ${post.userId}`);
   }
 }
 
-export { handlePostsLoad, handlePhotosLoad };
+export { handlePostsLoad, handleSetUserToPost };
