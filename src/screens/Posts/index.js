@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { FlatList, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import Page from '../../components/Page';
 import PostListRow from '../../components/PostListRow';
-import Loading from '../../components/Loading';
 import { createNavBar } from '../../utils';
-import { setCurrentPost,  } from '../../actions';
+import { setCurrentPost, loadPosts } from '../../actions';
 
 class Posts extends Component {
   static navigationOptions = createNavBar('Posts');
@@ -16,12 +14,12 @@ class Posts extends Component {
     this.props.navigation.navigate('PostDetails');
   };
 
+  onRefresh = () => {
+    this.props.loadPosts();
+  };
+
   render() {
     const { posts, isLoading, error } = this.props;
-
-    if (isLoading) {
-      return <Loading />;
-    }
 
     return (
       <Page paddingTop="20" paddingLeft="20" paddingRight="20">
@@ -30,16 +28,18 @@ class Posts extends Component {
         ) : (
             <FlatList
               data={posts}
-              renderItem={({ item, index }) => (
+              renderItem={({ item }) => (
                 <TouchableOpacity
-                  key={`${index}`}
+                  key={`post-${item.id}`}
                   onPress={() => this.onSelectPost(item)}>
                   <PostListRow
                     title={item.title}
-                    desc={`by ${item.user && item.user.name}`}
+                    desc={`${item.user && 'by ' + item.user.name || ''}`}
                   />
                 </TouchableOpacity>
               )}
+              onRefresh={this.onRefresh}
+              refreshing={isLoading}
             />
           )}
       </Page>
@@ -56,6 +56,7 @@ const mapStateToProps = ({ posts, isPostsLoading, postsError }) => ({
 const mapDispatchToProps = dispatch => ({
   setCurrentPost: post =>
     dispatch(setCurrentPost(post)),
+  loadPosts: () => dispatch(loadPosts()),
 });
 
 export default connect(
