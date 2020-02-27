@@ -24,10 +24,9 @@ const clearCurrentPost = post => ({
   post,
 });
 
-const setPostUser = (post, user) => ({
-  type: POSTS.SET_USER,
-  post,
-  user,
+const setPostsUsers = postsWithUsers => ({
+  type: POSTS.SET_USERS,
+  postsWithUsers,
 });
 
 export {
@@ -36,5 +35,5 @@ export {
   setError,
   setCurrentPost,
   clearCurrentPost,
-  setPostUser
+  setPostsUsers,
 };

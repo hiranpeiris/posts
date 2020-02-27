@@ -4,7 +4,7 @@ const POSTS = {
   LOAD_FAIL: 'POSTS_LOAD_FAIL',
   SELECT: 'POSTS_SELECT',
   CLEAR: 'POSTS_CLEAR',
-  SET_USER: 'POSTS_SET_USER',
+  SET_USERS: 'POSTS_SET_USERS',
 };
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com';

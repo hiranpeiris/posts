@@ -28,18 +28,19 @@ class Posts extends Component {
         ) : (
             <FlatList
               data={posts}
+              keyExtractor={item => `post-${item.id}`}
               renderItem={({ item }) => (
                 <TouchableOpacity
-                  key={`post-${item.id}`}
                   onPress={() => this.onSelectPost(item)}>
                   <PostListRow
                     title={item.title}
-                    desc={`${item.user && 'by ' + item.user.name || ''}`}
+                    desc={`${item.user && 'by ' + item.user.name || 'Loading user...'}`}
                   />
                 </TouchableOpacity>
               )}
               onRefresh={this.onRefresh}
               refreshing={isLoading}
+              removeClippedSubviews={true}
             />
           )}
       </Page>
