@@ -7,6 +7,12 @@ const POSTS = {
   SET_USERS: 'POSTS_SET_USERS',
 };
 
+const PHOTOS = {
+  LOAD: 'PHOTOS_LOAD',
+  LOAD_SUCCESS: 'PHOTOS_LOAD_SUCCESS',
+  LOAD_FAIL: 'PHOTOS_LOAD_FAIL',
+};
+
 const BASE_URL = 'https://jsonplaceholder.typicode.com';
 
-export { POSTS, BASE_URL };
+export { POSTS, PHOTOS, BASE_URL };

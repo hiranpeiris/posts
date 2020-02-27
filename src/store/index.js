@@ -9,8 +9,8 @@ const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
   const store = createStore(
     rootReducer,
-    applyMiddleware(sagaMiddleware),
-    //applyMiddleware(sagaMiddleware, logger),
+    //applyMiddleware(sagaMiddleware),
+    applyMiddleware(sagaMiddleware, logger),
   );
   sagaMiddleware.run(rootSaga);
   store.dispatch(loadPosts());

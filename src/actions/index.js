@@ -1,4 +1,4 @@
-import { POSTS } from '../constants';
+import { POSTS, PHOTOS } from '../constants';
 
 const loadPosts = () => ({
   type: POSTS.LOAD,
@@ -29,6 +29,20 @@ const setPostsUsers = postsWithUsers => ({
   postsWithUsers,
 });
 
+const loadPhotos = () => ({
+  type: PHOTOS.LOAD,
+});
+
+const setPhotos = photos => ({
+  type: PHOTOS.LOAD_SUCCESS,
+  photos,
+});
+
+const setPhotoLoadError = error => ({
+  type: PHOTOS.LOAD_FAIL,
+  error,
+});
+
 export {
   loadPosts,
   setPosts,
@@ -36,4 +50,7 @@ export {
   setCurrentPost,
   clearCurrentPost,
   setPostsUsers,
+  loadPhotos,
+  setPhotos,
+  setPhotoLoadError
 };

@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import Page from '../../components/Page';
 import PostListRow from '../../components/PostListRow';
 import { createNavBar } from '../../utils';
-import { setCurrentPost, loadPosts } from '../../actions';
+import { setCurrentPost, loadPosts, loadPhotos } from '../../actions';
 
 class Posts extends Component {
   static navigationOptions = createNavBar('Posts');
 
   onSelectPost = post => {
     this.props.setCurrentPost(post);
+    this.props.loadPhotos();
     this.props.navigation.navigate('PostDetails');
   };
 
@@ -58,6 +59,7 @@ const mapDispatchToProps = dispatch => ({
   setCurrentPost: post =>
     dispatch(setCurrentPost(post)),
   loadPosts: () => dispatch(loadPosts()),
+  loadPhotos: () => dispatch(loadPhotos()),
 });
 
 export default connect(
