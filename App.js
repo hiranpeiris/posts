@@ -1,26 +1,18 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import PostsApp from './src/PostsApp';
+import configureStore from './src/store';
 
-const App = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.msg}>Posts App!</Text>
-    </View>
-  );
-};
+const store = configureStore();
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <PostsApp />
+      </Provider>
+    );
+  }
+}
 
 export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  msg: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'green'
-  }
-});
